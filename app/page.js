@@ -1,101 +1,80 @@
-import Image from "next/image";
 
-export default function Home() {
+"use client"
+import React from 'react'
+import Navbar from './profile/_components/Navbar'
+import ProfileSetup from './profile/_components/ProfileSetup'
+import { useSelector } from 'react-redux';
+
+const page = () => {
+  const user = useSelector((state) => state.auth.user);
+  const userId = user?._id;
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+ <>
+     <div className="bg-gray-900 text-white pt-[20%]">
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+
+
+
+      {/* Hero Section */}
+      <section id="home" className="bg-cover bg-center  relative" >
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="container mx-auto flex justify-center items-center h-full text-center px-6">
+          <div>
+            <h2 className="text-5xl font-semibold text-white mb-4">Connect with the Right Mentors</h2>
+            <p className="text-xl text-white mb-8">Empowering growth through mentorship. Learn, grow, and achieve your goals.</p>
+
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="py-16 bg-gray-800">
+        <div className="container mx-auto text-center">
+          <h3 className="text-3xl font-semibold text-blue-500 mb-8">Our Features</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 px-6">
+            <div className="bg-gray-700 p-6 rounded-lg shadow-lg">
+              <h4 className="text-2xl font-semibold mb-4">Find the Perfect Mentor</h4>
+              <p>Search for mentors based on your career goals and skills to receive tailored guidance.</p>
+            </div>
+            <div className="bg-gray-700 p-6 rounded-lg shadow-lg">
+              <h4 className="text-2xl font-semibold mb-4">Connect and Grow</h4>
+              <p>Build meaningful relationships and take your career to the next level with personalized mentorship.</p>
+            </div>
+            <div className="bg-gray-700 p-6 rounded-lg shadow-lg">
+              <h4 className="text-2xl font-semibold mb-4">Track Your Progress</h4>
+              <p>Set goals, get feedback, and monitor your growth with integrated progress tracking tools.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-16 bg-gray-900">
+        <div className="container mx-auto text-center">
+          <h3 className="text-3xl font-semibold text-blue-500 mb-8">About Us</h3>
+          <p className="text-xl text-white max-w-3xl mx-auto">MentorshipHub is a platform that connects mentees with experienced mentors across various fields. Our mission is to foster growth, learning, and collaboration by helping individuals connect with the right mentors who can guide them toward success.</p>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-16 bg-gray-800">
+        <div className="container mx-auto text-center">
+          <h3 className="text-3xl font-semibold text-blue-500 mb-8">Contact Us</h3>
+          <p className="text-xl text-white mb-4">Have questions or need assistance? We’re here to help!</p>
+          <a href="mailto:contact@mentorshiphub.com" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-lg">Get in Touch</a>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 py-6">
+        <div className="container mx-auto text-center text-white">
+          <p>&copy; 2024 MentorshipHub. All rights reserved.</p>
+        </div>
       </footer>
     </div>
-  );
+ </>
+  )
 }
+
+export default page
