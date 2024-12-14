@@ -13,7 +13,7 @@ const NotificationsPage = () => {
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/v1/mentorship/getAllMessage/${userId}`); // Replace with your API URL
+        const response = await axios.get(`https://mentorship-platform-server.onrender.com/api/v1/mentorship/getAllMessage/${userId}`); // Replace with your API URL
         setNotifications(response.data.notifications);
       } catch (err) {
         setError("Failed to load notifications.");

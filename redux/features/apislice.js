@@ -6,7 +6,7 @@ import { userLogin } from "./auth/authslice";
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8000/api/v1",
+    baseUrl: "https://mentorship-platform-server.onrender.com/api/v1",
     credentials: "include",
     prepareHeaders: (headers) => {
       return headers;

@@ -1,7 +1,8 @@
 "use client";
 
+import { useProfileUpdateMutation } from '../../../redux/features/auth/apiauth';
 import { useLazyLoadUserDetailQuery } from '../../../redux/features/apislice';
-import { useProfileUpdateMutation } from '../../../redux/features//profile/profileapi';
+// import { useProfileUpdateMutation } from '../../../redux/features//profile/profileapi';
 import React, { useState, useEffect } from 'react';
 // import { useProfileUpdateMutation } from '../redux/features/profile/profileapi';
 // import { useLazyLoadUserDetailQuery } from "../redux/features/apislice";

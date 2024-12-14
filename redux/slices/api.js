@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const mentorApi = createApi({
   reducerPath: "mentorApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8000/api/v1" }), // Update to match your API URL
+  baseQuery: fetchBaseQuery({ baseUrl: "https://mentorship-platform-server.onrender.com/api/v1" }), // Update to match your API URL
   endpoints: (builder) => ({
     getAllRequests: builder.query({
         query: (userId) => `/mentorship/getAllRequests/${userId}`, // Pass the userId as part of the URL

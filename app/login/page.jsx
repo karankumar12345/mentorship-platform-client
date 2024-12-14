@@ -36,9 +36,10 @@ const Page = () => {
     try {
       const res = await register(data).unwrap();
 
-      console.log(res);
+     //go to home page
+      window.location.href = "/";
 
-      toast.success("Registration successful! 🎉");  // Success notification
+      toast.success("Login successful! 🎉");  // Success notification
     } catch (error) {
       console.error(error);
       toast.error("Registration failed! Please try again. ❌");  // Error notification

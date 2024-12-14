@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useLazyLoadUserDetailQuery } from "../../../redux/features/apislice";
+// import { useLazyLoadUserDetailQuery } from "../../../redux/features/apislice";
 import { useSelector } from "react-redux";
 import { useProfileUpdateMutation } from "../../../redux/features/auth/apiauth";
 import { useGetProfileUSERIDQuery } from "../../../redux/features/auth/apiauth";

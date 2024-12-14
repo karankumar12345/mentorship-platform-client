@@ -194,7 +194,7 @@ const UserDiscovery = () => {
                 <p className="text-red-500 mt-2">Request Rejected</p>
               ) : (
                 <button
-                  onClick={() => handleConnectRequest(user._id)}
+                  onClick={() => handleConnectRequest(user.user)}
                   className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 mt-2"
                 >
                   Connect

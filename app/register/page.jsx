@@ -37,7 +37,7 @@ const Page = () => {
     try {
       const res = await register(data).unwrap();
 
-      console.log(res);
+      window.location.href = "/";
 
       toast.success("Registration successful! 🎉");  // Success notification
     } catch (error) {

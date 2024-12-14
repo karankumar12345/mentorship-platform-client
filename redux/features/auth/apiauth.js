@@ -100,6 +100,23 @@ export const authApi = apiSlice.injectEndpoints({
       },
     }),
 
+    //logout 
+    logout: builder.mutation({
+      query: () => ({
+        url: "/user/logout",
+        method: "POST",
+        credentials: "include",
+      }),
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        try {
+          await queryFulfilled;
+          dispatch(userLogin({ token: null, user: null }));
+        } catch (error) {
+          console.log("Logout error:", error);
+        }
+      },
+    }),
+
     requestMentorship: builder.mutation({
       query: (data) => ({
         url: "/mentorship/createRequest",
@@ -114,6 +131,7 @@ export const authApi = apiSlice.injectEndpoints({
         url: `/mentorships/${id}`,
         method: "GET",
       }),
+      
     }),
 
     assignMentor: builder.mutation({
@@ -196,6 +214,7 @@ export const {
   useAssignMentorMutation,
   useDeleteMentorshipMutation,
   useGetAllProfileQuery,
- useGetPRofileQuery
+ useGetPRofileQuery,
+  useLogoutMutation
   
 } = authApi;

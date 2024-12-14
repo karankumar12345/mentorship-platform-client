@@ -1,21 +1,29 @@
 "use client";
-
-import React, { useEffect } from "react";
+import React from "react";
 import Link from "next/link";
-// import { useGetProfileUSERIDQuery } from "redux/features/auth/apiauth";
-import { useLazyLoadUserDetailQuery } from "../../../redux/features/apislice";
-import { useSelector } from "react-redux";
-import { useGetProfileUSERIDQuery } from "../../../redux/features/auth/apiauth";
-import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
-// import { useGetProfileUSERIDQuery } from "../../../redux/features/profile/profileapi";
+import { useSelector, useDispatch } from "react-redux";
+// import { login, logout } from "../../../redux/features/auth/authSlice";
+import { useGetProfileUSERIDQuery, useLogoutMutation } from "../../../redux/features/auth/apiauth";
+import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 
 const Navbar = ({ userId }) => {
-  // Fetch user profile using RTK Query
   const { data: profile, error, isLoading } = useGetProfileUSERIDQuery(userId);
-console.log(profile)
+  console.log(profile);
 
-  // Determine if the profile exists
-  const hasProfile = profile?.success ?? false;
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.auth);
+  const [logout] = useLogoutMutation();
+  let isAuthenticated=false;
+if(token){
+    isAuthenticated=true;
+}
+else{
+  isAuthenticated=false
+}
+  const handleLogout = async() => {
+    await logout() // Dispatch logout action
+    console.log("User logged out");
+  };
 
   return (
     <nav className="bg-gray-800 p-4 text-white">
@@ -25,7 +33,9 @@ console.log(profile)
         </h1>
         <ul className="flex space-x-4">
           <li>
-            <Link href="/notification"><NotificationsActiveIcon/></Link>
+            <Link href="/notification">
+              <NotificationsActiveIcon />
+            </Link>
           </li>
           <li>
             <Link href="/">Home</Link>
@@ -38,13 +48,12 @@ console.log(profile)
           </li>
           <li className="relative group">
             <button className="hover:text-gray-300">Profile</button>
-            {/* Dropdown */}
             <div className="absolute bg-white text-black p-2 rounded hidden group-hover:block">
               {isLoading ? (
                 <p className="px-4 py-2 text-gray-500">Loading...</p>
-              )  : (
+              ) : (
                 <ul className="space-y-2">
-                  {!hasProfile ? (
+                  {!profile?.success ? (
                     <li>
                       <Link
                         href="/profile/create"
@@ -70,6 +79,12 @@ console.log(profile)
                         >
                           Edit Profile
                         </Link>
+                        <Link
+                          href="/match-profile"
+                          className="block px-4 py-2 hover:bg-gray-200"
+                        >
+                          Match Profile
+                        </Link>
                       </li>
                       <li>
                         <Link
@@ -84,6 +99,20 @@ console.log(profile)
                 </ul>
               )}
             </div>
+          </li>
+          <li>
+            {isAuthenticated ? (
+              <button
+                onClick={handleLogout}
+                className="hover:text-gray-300"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link href="/login" className="hover:text-gray-300">
+                Login
+              </Link>
+            )}
           </li>
         </ul>
       </div>
